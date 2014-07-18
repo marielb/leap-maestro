@@ -12,11 +12,25 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
-
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
+           <!-- player skin -->
+
+       <!-- player skin -->
+       <link rel="stylesheet" type="text/css" href="/sdk/flowplayer-5.4.6/skin/minimalist.css">
+
+       <!-- site specific styling -->
+       <style type="text/css">
+       body { font: 12px "Myriad Pro", "Lucida Grande", sans-serif; text-align: center; padding-top: 5%; }
+       .flowplayer { width: 80%; }
+       </style>
+
+       <!-- flowplayer depends on jQuery 1.7.1+ (for now) -->
+       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+       <!-- include flowplayer -->
+       <script type="text/javascript" src="/sdk/flowplayer-5.4.6/flowplayer.min.js"></script>
         <!-- endbuild -->
     </head>
     <body>
@@ -25,20 +39,17 @@
         <![endif]-->
 
 
-        <div class="hero-unit">
-          <h1>'Allo, 'Allo!</h1>
-          <p>You now have</p>
-          <ul>
-            <li>HTML5 Boilerplate</li>
-
-
-          </ul>
-        </div>
+       <!-- the player -->
+       <div class="flowplayer" data-swf="/sdk/flowplayer-5.4.6/flowplayer.swf" data-ratio="0.4167">
+          <video>
+             <source type="video/webm" src="http://stream.flowplayer.org/bauhaus/624x260.webm">
+             <source type="video/mp4" src="http://stream.flowplayer.org/bauhaus/624x260.mp4">
+             <source type="video/ogv" src="http://stream.flowplayer.org/bauhaus/624x260.ogv">
+          </video>
+       </div>
 
 
         <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
-        <script src="bower_components/jquery/dist/jquery.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
