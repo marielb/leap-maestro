@@ -3,68 +3,46 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <title>leap maestro</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-        <link rel="shortcut icon" href="/favicon.ico">
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css styles/vendor.css -->
-        <!-- bower:css -->
-        <!-- endbower -->
-        <!-- endbuild -->
-        <!-- build:css(.tmp) styles/main.css -->
-           <!-- player skin -->
+  <head>
+    <meta charset="utf-8">
+    <title>leap maestro</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="/favicon.ico">
 
-       <!-- player skin -->
-       <link rel="stylesheet" type="text/css" href="/sdk/flowplayer-5.4.6/skin/minimalist.css">
+    <link rel="stylesheet" type="text/css" href="/sdk/flowplayer-5.4.6/skin/minimalist.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
 
-       <!-- site specific styling -->
-       <style type="text/css">
-       body { font: 12px "Myriad Pro", "Lucida Grande", sans-serif; text-align: center; padding-top: 5%; }
-       .flowplayer { width: 80%; }
-       </style>
-
-       <!-- flowplayer depends on jQuery 1.7.1+ (for now) -->
-       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-
-       <!-- include flowplayer -->
-       <script type="text/javascript" src="/sdk/flowplayer-5.4.6/flowplayer.min.js"></script>
-        <!-- endbuild -->
-    </head>
-    <body>
-        <!--[if lt IE 10]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
 
-       <!-- the player -->
-       <div class="flowplayer" data-swf="/sdk/flowplayer-5.4.6/flowplayer.swf" data-ratio="0.4167">
-          <video>
-             <source type="video/webm" src="http://stream.flowplayer.org/bauhaus/624x260.webm">
-             <source type="video/mp4" src="http://stream.flowplayer.org/bauhaus/624x260.mp4">
-             <source type="video/ogv" src="http://stream.flowplayer.org/bauhaus/624x260.ogv">
-          </video>
-       </div>
+    <!-- the player -->
+    <div class="flowplayer" data-swf="/sdk/flowplayer-5.4.6/flowplayer.swf" data-ratio="0.4167">
+      <video>
+        <source type="video/webm" src="http://stream.flowplayer.org/bauhaus/624x260.webm">
+        <source type="video/mp4" src="http://stream.flowplayer.org/bauhaus/624x260.mp4">
+        <source type="video/ogv" src="http://stream.flowplayer.org/bauhaus/624x260.ogv">
+      </video>
+    </div>
 
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
 
-        <!-- build:js scripts/vendor.js -->
-        <!-- endbower -->
-        <!-- endbuild -->
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
-
-        <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
-        <!-- endbuild -->
-</body>
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="/sdk/flowplayer-5.4.6/flowplayer.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
 </html>
