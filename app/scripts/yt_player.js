@@ -4,6 +4,8 @@ var ytPlayer = {
 
   initialize: function(api) {
     this.api = api;
+
+    console.log(api);
   },
 
   speed: function(speedChange) {
