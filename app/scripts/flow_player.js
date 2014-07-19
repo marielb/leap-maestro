@@ -27,6 +27,14 @@ var flowPlayer = {
     }
   },
 
+  volume: function(volumeChange) {
+    if (volumeChange < 0) {
+      this.volume(this.api.volumeLevel - .1);
+    } else {
+      this.volume(this.api.volumeLevel + .1);
+    }
+  },
+
   load: function() {
 
   },

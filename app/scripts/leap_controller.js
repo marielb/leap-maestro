@@ -75,6 +75,8 @@ var leapController = {
           console.log('average: ' + this.average + ' currspeed: ' + this.currSpeed);
 
           flowPlayer.speed((this.average / this.currSpeed));
+          this.average = this.currSpeed;
+
           console.log('SPEED: ' + (this.average / this.currSpeed));
       }
     }
@@ -96,13 +98,13 @@ var leapController = {
         this.raiseCount++;
         if (this.raiseCount == 8) {
           this.raiseCount = 0;
-          console.log("raise volume by a tiny bit");
+          flowPlayer.volume(1);
         };
     } else {
         this.lowerCount++;
         if (this.lowerCount == 8) {
           this.lowerCount = 0;
-          console.log("lower volume by a tiny bit");
+          flowPlayer.volume(-1);
         };
     }
   }
