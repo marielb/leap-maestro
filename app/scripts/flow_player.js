@@ -27,8 +27,16 @@ var flowPlayer = {
     }
 
     var speedChange = Math.round(speedChange * 10) / 10;
-    console.log("Adjust speed to: " + (1 + speedChange));
-    this.playSpeed = 1 + speedChange;
+
+    // it glitches if it goes any slower or faster than these
+    if (speedChange < 0.6) {
+      speedChange = 0.6;
+    } else if (speedChange > 2) {
+      speedChange = 2;
+    }
+
+    console.log("Adjust speed to: " + speedChange);
+    this.playSpeed = speedChange;
     this.api.speed(this.playSpeed);
   },
 

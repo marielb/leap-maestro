@@ -71,7 +71,7 @@ var leapController = {
         console.log('new speed: ' + this.currTempo);
         $(".current-tempo").html(this.currTempo + " BPM&nbsp;&nbsp;");
 
-        flowPlayer.speed(1 - newRatio);
+        flowPlayer.speed(1 / newRatio);
       } else {
         this.originalTempo = this.currTempo;
 
@@ -101,7 +101,7 @@ var leapController = {
         };
     } else {
         this.lowerCount++;
-        if (this.lowerCount == 30) {
+        if (this.lowerCount == 25) {
           this.lowerCount = 0;
           flowPlayer.volume(-.1);
         };
