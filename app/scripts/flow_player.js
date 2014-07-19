@@ -21,9 +21,11 @@ var flowPlayer = {
 
   speed: function(speedChange) {
     if (speedChange < 1) {
-      this.api.speed(this.api.currentSpeed + .25);
+      this.playSpeed -= 0.25;
+      this.api.speed(this.playSpeed);
     } else {
-      this.api.speed(this.api.currentSpeed - .25);
+      this.playSpeed += 0.25;
+      this.api.speed(this.playSpeed);
     }
   },
 
