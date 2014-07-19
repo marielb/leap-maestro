@@ -35,12 +35,36 @@ a:hover {
   color: #674172;
 }
 
-#leap-status h2 {
+#contact-info {
+  display: inline-block;
+}
+
+#leap-status {
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+  bottom: 5px;
+}
+
+#playback-info h2 {
+  margin: 15px 0 0;
   float: right;
   line-height: 40px;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+#leap-status h2 {
+  display:inline-block;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: -1px;
+  line-height: 40px;
+}
+
+#playback-info .original-tempo, #playback-info .current-tempo {
+  color: #F64747;
 }
 
 #leap-status h2 .status {

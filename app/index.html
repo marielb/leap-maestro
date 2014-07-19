@@ -20,9 +20,9 @@
     <![endif]-->
     <div class="page-wrap">
       <header>
-        <div id="leap-status">
-          <h2 class="connected">Leap Motion <span class="status">Connected</span></h2>
-          <h2 class="disconnected">Leap Motion <span class="status">Disconnected</span></h2>
+        <div id="playback-info">
+          <h2>Original Tempo: <span class="original-tempo">? BPM</span></h2>
+          <h2>Current Tempo: <span class="current-tempo">? BPM&nbsp;&nbsp;</span></h2>
         </div>
         <h1>leap maestro</h1>
       </header>
@@ -74,11 +74,18 @@
     </div>
     
     <footer>
-      <a href="http://twitter.com/whatmariel" target="_blank">@whatmariel</a> x 
-      <a href="http://twitter.com/emilyrroth" target="_blank">@emilyrroth</a> x 
-      <a href="http://twitter.com/doichi_" target="_blank">@doichi_</a>
-      <br>
-      Made at <a href="http://wayfair.com" target="_blank">Wayfair</a> Hackathon 2014
+      <div id="contact">
+        <a href="http://twitter.com/whatmariel" target="_blank">@whatmariel</a> x 
+        <a href="http://twitter.com/emilyrroth" target="_blank">@emilyrroth</a> x 
+        <a href="http://twitter.com/doichi_" target="_blank">@doichi_</a>
+        <br>
+        Made at <a href="http://wayfair.com" target="_blank">Wayfair</a> Hackathon 2014
+      </div> 
+
+      <div id="leap-status">
+        <h2 class="connected">Leap Motion <span class="status">Connected</span></h2>
+        <h2 class="disconnected">Leap Motion <span class="status">Disconnected</span></h2>
+      </div>
     </footer>
 
     <!-- build:js({app,.tmp}) scripts/main.js -->

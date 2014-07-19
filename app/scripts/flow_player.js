@@ -20,21 +20,24 @@ var flowPlayer = {
   },
 
   speed: function(speedChange) {
-    if (speedChange < 1) {
-      this.playSpeed -= 0.25;
-      this.api.speed(this.playSpeed);
-    } else {
-      this.playSpeed += 0.25;
-      this.api.speed(this.playSpeed);
+    if (speedChange == 0 
+        || speedChange == Number.POSITIVE_INFINITY 
+        || speedChange == Number.NEGATIVE_INFINITY) {
+      return;
     }
+
+    var speedChange = Math.round(speedChange * 10) / 10;
+    console.log("Adjust speed to: " + (1 + speedChange));
+    this.playSpeed = 1 + speedChange;
+    this.api.speed(this.playSpeed);
   },
 
   volume: function(volumeChange) {
-    if (volumeChange < 0) {
-      this.api.volume(this.api.volumeLevel - .1);
-    } else {
-      this.api.volume(this.api.volumeLevel + .1);
-    }
+    var currentVolume = Math.round(this.api.volumeLevel * 100) / 100;
+
+    this.api.volume(currentVolume + volumeChange);
+
+    console.log("VOLUME: " + this.api.volumeLevel);
   },
 
   load: function() {

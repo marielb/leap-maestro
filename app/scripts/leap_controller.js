@@ -3,8 +3,8 @@ var leapController = {
   controller: new Leap.Controller({enableGestures: true}),
 
   swiper: null,
-  xTolerance: 10,
-  yTolerance: 80,
+  xTolerance: 20,
+  yTolerance: 60,
   swipeLeft: false,
   current: Date.now(),
 
@@ -13,8 +13,8 @@ var leapController = {
 
   swipeDurations: [],
 
-  average: null,
-  currSpeed: null,
+  originalTempo: null,
+  currTempo: null,
 
   initialize: function() {
     var that = this;
@@ -55,36 +55,35 @@ var leapController = {
   },
 
   resetTime: function () {
-    var diff = (Date.now() - this.current) / 100;
-    console.log(diff);
+    var bpm = 60000 / (Date.now() - this.current);
 
-    // capture the average in the beginning
-    if (this.average === null) {
-      this.swipeDurations.push(diff);
-      if (this.swipeDurations.length == 9) {
-          this.average = this.getAverage(this.swipeDurations);
-          this.swipeDurations = [];
-          console.log('average: ' + this.average);
-      }
+    bpm = Math.round(bpm * 1) / 1;
+    console.log("BPM: " + bpm);
+
     // keep track of tempo
-    } else {
-      this.swipeDurations.push(diff);
-      if (this.swipeDurations.length == 4) {
-          this.currSpeed = this.getAverage(this.swipeDurations);
-          this.swipeDurations = [];
-          console.log('average: ' + this.average + ' currspeed: ' + this.currSpeed);
+    this.swipeDurations.push(bpm);
+    if (this.swipeDurations.length == 3) {
+      this.currTempo = this.getoriginalTempo(this.swipeDurations);
+      this.swipeDurations = [];
 
-          flowPlayer.speed((this.average / this.currSpeed));
-          this.average = this.currSpeed;
+      if (this.originalTempo != null) {
+        var newRatio = (this.originalTempo / this.currTempo);
+        console.log('new speed: ' + this.currTempo);
+        $(".current-tempo").html(this.currTempo + " BPM&nbsp;&nbsp;");
 
-          console.log('SPEED: ' + (this.average / this.currSpeed));
+        flowPlayer.speed(1 - newRatio);
+      } else {
+        this.originalTempo = this.currTempo;
+
+        console.log('AVERAGE SET: ' + this.currTempo);
+        $(".original-tempo").html(this.originalTempo + " BPM");
       }
     }
 
     return Date.now();
   }, 
 
-  getAverage: function () { 
+  getoriginalTempo: function () { 
     var sum = 0; 
     for (var x = 1; x < this.swipeDurations.length - 1; x++) {
         sum = sum + this.swipeDurations[x];
@@ -96,15 +95,15 @@ var leapController = {
   adjustVolume: function (val) {
     if (val < 0) {
         this.raiseCount++;
-        if (this.raiseCount == 8) {
+        if (this.raiseCount == 20) {
           this.raiseCount = 0;
-          flowPlayer.volume(1);
+          flowPlayer.volume(.1);
         };
     } else {
         this.lowerCount++;
-        if (this.lowerCount == 8) {
+        if (this.lowerCount == 30) {
           this.lowerCount = 0;
-          flowPlayer.volume(-1);
+          flowPlayer.volume(-.1);
         };
     }
   }
