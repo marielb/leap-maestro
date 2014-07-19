@@ -17,10 +17,7 @@ $(document).ready(function() {
   leapConductor.initialize();
   
   // hide video list and show video
-  $('#video-list li').click(function() {
-    if ($(this).children('.plus')) {
-      return;
-    }
+  $('#video-list li.video-flow').click(function() {
     var vidName = $(this).data('link');
     $('#video-list').hide();
     $('.flowplayer').css({
