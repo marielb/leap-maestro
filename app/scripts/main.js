@@ -30,7 +30,7 @@ $(document).ready(function() {
   });
 
   // hide flowplayer video and show list
-  $('flowplayer .video-exit').click(function() {
+  $('.flowplayer .video-exit').click(function() {
     $(this).hide();
     $('.flowplayer').animate({
       marginTop: '300px',
