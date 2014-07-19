@@ -51,19 +51,6 @@ flowPlayer = {
   }
 }
 
-  ctl.on( 'connect' , function(){
-    $('.connected').show();
-    $('.disconnected').hide();
-    console.log( 'Successfully connected.' );
-  });
-
-  ctl.on( 'disconnect' , function(){
-    $('.connected').hide();
-    $('.disconnected').show();
-    console.log( 'LeapMotion disconnected.' );
-  });
-
-
 var leapController = {
 
   controller: new Leap.Controller({enableGestures: true}),
@@ -82,10 +69,14 @@ var leapController = {
     var that = this;
 
     this.controller.on( 'connect' , function(){
+      $('.connected').show();
+      $('.disconnected').hide();
       console.log( 'Successfully connected.' );
     });
 
     this.controller.on( 'disconnect' , function(){
+      $('.connected').hide();
+      $('.disconnected').show();
       console.log( 'LeapMotion disconnected.' );
     });
 
