@@ -1,8 +1,17 @@
 $(document).ready(function() {
-  var vid = $('#video-list li');
-  $.each(vid, function() {
-    var randomColor = Math.floor(Math.random()*16777215).toString(16);
-    $(this).css('background-color', '#' + randomColor);
+
+  $('#video-list li').click(function() {
+    var vidName = $(this).data('link');
+    $('#video-list').hide();
+    $('.flowplayer').show();
+    $('.fp-engine').attr('src', '../videos/' + vidName);
+    $('.video-exit').show();
+  });
+
+  $('.video-exit').click(function() {
+    $(this).hide();
+    $('.flowplayer').fadeOut(500);
+    $('#video-list').fadeIn(500);
   });
 
     appState = {
@@ -36,6 +45,12 @@ $(document).ready(function() {
 
      
       });
+
+      console.log('!!!!!!');
+      $('.video-exit').click(function() {
+          console.log('stop!!!!');
+          api.stop();
+        });
      
     });
 
@@ -43,10 +58,14 @@ $(document).ready(function() {
   var ctl = new Leap.Controller({enableGestures: true});
 
   ctl.on( 'connect' , function(){
+    $('.connected').show();
+    $('.disconnected').hide();
     console.log( 'Successfully connected.' );
   });
 
   ctl.on( 'disconnect' , function(){
+    $('.connected').hide();
+    $('.disconnected').show();
     console.log( 'LeapMotion disconnected.' );
   });
 
@@ -101,4 +120,6 @@ $(document).ready(function() {
 
     return sum / 8;
   }
+
+
 });

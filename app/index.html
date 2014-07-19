@@ -28,12 +28,20 @@
     </header>
 
     <ul id="video-list">
-      <li>
-        <div class="video-name" data-link="NimrodEnigmaeEgar.mp4">NimrodEnigmaeEgar</div>
+      <li data-link="NimrodEnigmaeEgar.mp4">
+        <div class="video-name">NimrodEnigmaeEgar</div>
+      </li>
+      <li data-link="Random1.mp4">
+        <div class="video-name">Random1</div>
+      </li>
+      <li data-link="Random2.mp4">
+        <div class="video-name">Random2</div>
       </li>
     </ul>
+
     <!-- the player -->
     <div class="flowplayer" data-swf="/sdk/flowplayer-5.4.6/flowplayer.swf" data-ratio="0.4167">
+      <div class="video-exit"><img src="img/x.png"></div>
       <video preload>
         <source type="video/mp4" src="videos/NimrodEnigmaeEgar.mp4">
       </video>

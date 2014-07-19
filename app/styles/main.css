@@ -54,12 +54,6 @@ header h1 {
   background: #D30A0A;
 }
 
-.flowplayer { 
-  display: none;
-  width: 100%; 
-  background: #000;
-}
-
 #video-list {
   list-style: none;
   width: 80%;
@@ -69,13 +63,38 @@ header h1 {
 #video-list li {
   width: 300px;
   height: 200px;
-  /*background: #8508BF;*/
-  -webkit-box-shadow:inset 0 0 40px 5px rgba(0,0,0,0.7);
-          box-shadow:inset 0 0 40px 5px rgba(0,0,0,0.7);
   font-weight: bold;
   position: relative;
   line-height: 200px;
   text-align: center;
+  display: inline-block;
+  margin: 10px;
+  vertical-align: middle;
+  -webkit-transition: all 200ms ease-in-out;
+     -moz-transition: all 200ms ease-in-out;
+      -ms-transition: all 200ms ease-in-out;
+       -o-transition: all 200ms ease-in-out;
+          transition: all 200ms ease-in-out;
+}
+
+#video-list li:nth-of-type(3n+3) {
+  background: #674172;
+}
+
+#video-list li:nth-of-type(3n+2) {
+  background: #1BA39C;
+}
+
+#video-list li:nth-of-type(3n+1) {
+  background: #F64747;
+}
+
+#video-list li:hover {
+  cursor: pointer;
+  width: 310px;
+  height: 210px;
+  margin: 0 5px;
+  line-height: 210px;
 }
 
 .video-name {
@@ -84,4 +103,39 @@ header h1 {
   line-height: normal;
   font-size: 22px;
   color: rgba(255,255,255,0.7);
+}
+
+.flowplayer { 
+  display: none;
+  width: 100%; 
+  background: #000;
+  position: relative;
+}
+
+.video-exit {
+  display: none;
+  margin: 5px 10px 5px auto;
+  color: #fff;
+  opacity: .3;
+  width: 30px;
+  height: 30px;
+  -webkit-transition: all 200ms ease-in-out;
+     -moz-transition: all 200ms ease-in-out;
+      -ms-transition: all 200ms ease-in-out;
+       -o-transition: all 200ms ease-in-out;
+          transition: all 200ms ease-in-out;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 9999;
+}
+
+.video-exit:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+.video-exit img {
+  width: 30px;
+  height: 30px;
 }
