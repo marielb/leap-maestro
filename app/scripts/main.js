@@ -1,4 +1,10 @@
 $(document).ready(function() {
+  var vid = $('#video-list li');
+  $.each(vid, function() {
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    $(this).css('background-color', '#' + randomColor);
+  });
+
     appState = {
       playSpeed: 1
     }
@@ -95,5 +101,4 @@ $(document).ready(function() {
 
     return sum / 8;
   }
-
 });

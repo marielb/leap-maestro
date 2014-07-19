@@ -19,13 +19,23 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <header>
+      <div id="leap-status">
+        <h2 class="connected">Leap Motion <span class="status">Connected</span></h2>
+        <h2 class="disconnected">Leap Motion <span class="status">Disconnected</span></h2>
+      </div>
+      <h1>leap maestro</h1>
+    </header>
 
+    <ul id="video-list">
+      <li>
+        <div class="video-name" data-link="NimrodEnigmaeEgar.mp4">NimrodEnigmaeEgar</div>
+      </li>
+    </ul>
     <!-- the player -->
     <div class="flowplayer" data-swf="/sdk/flowplayer-5.4.6/flowplayer.swf" data-ratio="0.4167">
-      <video>
-        <source type="video/webm" src="http://stream.flowplayer.org/bauhaus/624x260.webm">
-        <source type="video/mp4" src="http://stream.flowplayer.org/bauhaus/624x260.mp4">
-        <source type="video/ogv" src="http://stream.flowplayer.org/bauhaus/624x260.ogv">
+      <video preload>
+        <source type="video/mp4" src="videos/NimrodEnigmaeEgar.mp4">
       </video>
     </div>
 
