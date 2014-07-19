@@ -64,12 +64,6 @@ a:hover {
   background: #D30A0A;
 }
 
-.flowplayer { 
-  display: none;
-  width: 100%; 
-  background: #000;
-}
-
 #video-list {
   list-style: none;
   width: 80%;

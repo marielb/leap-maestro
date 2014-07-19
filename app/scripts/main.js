@@ -1,4 +1,6 @@
 
+flowPlayer.initialize();
+
 $(document).ready(function() {
   
   leapConductor.initialize();
