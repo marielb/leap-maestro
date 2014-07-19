@@ -55,7 +55,6 @@ header h1 {
 }
 
 .flowplayer { 
-  display: none;
   width: 100%; 
   background: #000;
 }
