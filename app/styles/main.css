@@ -111,16 +111,34 @@ a:hover {
           transition: all 200ms ease-in-out;
 }
 
-#video-list li:nth-of-type(3n+3) {
-  background: #674172;
+/*red*/
+#video-list li:nth-of-type(6n+1) {
+  background: #F64747;
 }
 
-#video-list li:nth-of-type(3n+2) {
+/*blue*/
+#video-list li:nth-of-type(6n+2) {
   background: #1BA39C;
 }
 
-#video-list li:nth-of-type(3n+1) {
+/*purple*/
+#video-list li:nth-of-type(6n+3) {
+  background: #674172;
+}
+
+/*purple*/
+#video-list li:nth-of-type(6n+4) {
+  background: #674172;
+}
+
+/*red*/
+#video-list li:nth-of-type(6n+5) {
   background: #F64747;
+}
+
+/*grey*/
+#video-list li:nth-of-type(6n+6) {
+  background: #bfbfbf;
 }
 
 #video-list li:hover {
@@ -143,7 +161,48 @@ a:hover {
   font-size: 16px;
 }
 
-.flowplayer { 
+.video-plus {
+}
+
+.plus {
+  font-size: 120px;
+}
+
+.add {
+  display: none;
+}
+
+.add input, .add button {
+  margin: 10px auto;
+  display: block;
+  font-family: "Myriad Pro", "Lucida Grande", sans-serif; 
+  font-weight: bold;
+  text-align: center;
+}
+
+.add input {
+  width: 80%;
+  font-size: 24px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #aaa;
+}
+
+.add button {
+  width: 50%;
+  background: #674172;
+  padding: 10px;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+}
+
+.add button:hover {
+  cursor: pointer;
+  background: #512F5C;
+}
+
+.flowplayer, #ytplayer { 
   display: none;
   width: 100%; 
   background: #000;

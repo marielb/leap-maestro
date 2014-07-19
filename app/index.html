@@ -28,25 +28,48 @@
       </header>
 
       <ul id="video-list">
-        <li data-link="Nimrod.webm">
+        <li class="video-flow" data-link="Nimrod.webm">
           <div class="video-name">
             Nimrod
             <br>
             <span class="video-artist">Edward Elgar</span>
           </div>
         </li>
-        <li data-link="GameofThronesTheme.webm">
+        <li class="video-flow" data-link="GameofThronesTheme.webm">
           <div class="video-name">
             Game of Thrones
             <br>
             <span class="video-artist">Ramin Djawadi</span>
           </div>
         </li>
-        <li data-link="BoyfriendMaterial.webm">
+        <li class="video-flow" data-link="BoyfriendMaterial.webm">
           <div class="video-name">
             Boyfriend Material
             <br>
-            <span class="video-artist">Kris Salvador</span>
+            <span class="video-artist">Kris Salvador (Intern)</span>
+          </div>
+        </li>
+        <li class="video-flow" data-link="MonkeyWrench.webm">
+          <div class="video-name">
+            Monkey Wrench
+            <br>
+            <span class="video-artist">Foo Fighters</span>
+          </div>
+        </li>
+        <li class="video-flow" data-link="Bad.webm">
+          <div class="video-name">
+            Bad ft. Vassy
+            <br>
+            <span class="video-artist">David Guetta &amp; Showtek</span>
+          </div>
+        </li>
+        <li>
+          <div class="video-name video-plus">
+            <div class="plus">+</div>
+            <div class="add">
+              <input type="text" name="add-video" class="video-id" value="" placeholder="youtube video id">
+              <button class="load-youtube" type="submit">play</button>
+            </div>
           </div>
         </li>
       </ul>
@@ -60,6 +83,10 @@
           <!-- <source type="video/ogv" src="http://stream.flowplayer.org/bauhaus/624x260.ogv"> -->
           <source type="video/mp4" src="videos/Nimrod.webm">
         </video>
+      </div>
+
+      <div id="ytplayer">
+        <p>You need Flash 8 or better to view this content :( </p>
       </div>
 
       <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -92,6 +119,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="bower_components/leapjs/leap-0.6.1.min.js"></script>
     <script type="text/javascript" src="/sdk/flowplayer-5.4.6/flowplayer.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
     
     <script src="scripts/leap_conductor.js"></script>
     <script src="scripts/leap_controller.js"></script>
