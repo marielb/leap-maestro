@@ -18,44 +18,53 @@
     <!--[if lt IE 10]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div class="page-wrap">
+      <header>
+        <div id="leap-status">
+          <h2 class="connected">Leap Motion <span class="status">Connected</span></h2>
+          <h2 class="disconnected">Leap Motion <span class="status">Disconnected</span></h2>
+        </div>
+        <h1>leap maestro</h1>
+      </header>
 
-    <header>
-      <div id="leap-status">
-        <h2 class="connected">Leap Motion <span class="status">Connected</span></h2>
-        <h2 class="disconnected">Leap Motion <span class="status">Disconnected</span></h2>
+      <ul id="video-list">
+        <li data-link="NimrodEnigmaeEgar.mp4">
+          <div class="video-name">NimrodEnigmaeEgar</div>
+        </li>
+        <li data-link="Random1.mp4">
+          <div class="video-name">Random1</div>
+        </li>
+        <li data-link="Random2.mp4">
+          <div class="video-name">Random2</div>
+        </li>
+      </ul>
+
+      <!-- the player -->
+      <div class="flowplayer" data-swf="/sdk/flowplayer-5.4.6/flowplayer.swf" data-ratio="0.4167">
+        <div class="video-exit"><img src="img/x.png"></div>
+        <video preload>
+          <source type="video/mp4" src="videos/NimrodEnigmaeEgar.mp4">
+        </video>
       </div>
-      <h1>leap maestro</h1>
-    </header>
 
-    <ul id="video-list">
-      <li data-link="NimrodEnigmaeEgar.mp4">
-        <div class="video-name">NimrodEnigmaeEgar</div>
-      </li>
-      <li data-link="Random1.mp4">
-        <div class="video-name">Random1</div>
-      </li>
-      <li data-link="Random2.mp4">
-        <div class="video-name">Random2</div>
-      </li>
-    </ul>
-
-    <!-- the player -->
-    <div class="flowplayer" data-swf="/sdk/flowplayer-5.4.6/flowplayer.swf" data-ratio="0.4167">
-      <div class="video-exit"><img src="img/x.png"></div>
-      <video preload>
-        <source type="video/mp4" src="videos/NimrodEnigmaeEgar.mp4">
-      </video>
+      <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+      <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+      </script>
     </div>
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
+    
+    <footer>
+      <a href="http://twitter.com/whatmariel" target="_blank">@whatmariel</a> x 
+      <a href="http://twitter.com/emilyrroth" target="_blank">@emilyrroth</a> x 
+      <a href="http://twitter.com/doichi_" target="_blank">@doichi_</a>
+      <br>
+      Made at <a href="http://wayfair.com">Wayfair</a> Hackathon 2014
+    </footer>
 
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -68,12 +77,5 @@
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
 
-    <footer>
-      <a href="http://twitter.com/whatmariel" target="_blank">@whatmariel</a> x 
-      <a href="http://twitter.com/emilyrroth" target="_blank">@emilyrroth</a> x 
-      <a href="http://twitter.com/doichi_" target="_blank">@doichi_</a>
-      <br>
-      Made at <a href="http://wayfair.com">Wayfair</a> Hackathon 2014
-    </footer>
   </body>
 </html>

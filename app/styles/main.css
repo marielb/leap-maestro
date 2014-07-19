@@ -35,10 +35,6 @@ a:hover {
   color: #674172;
 }
 
-footer {
-  margin: 5px 0 0 0;
-}
-
 #leap-status h2 {
   float: right;
   line-height: 40px;
@@ -159,3 +155,29 @@ footer {
   width: 30px;
   height: 30px;
 }
+
+/* Make footer sticky! */
+
+html, body {
+  height: 100%;
+}
+
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -40px;
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+footer, .page-wrap:after {
+  height: 35px;
+}
+
+footer {
+  margin: 5px 0 0 0;
+}
+
+/* end sticky footer */
