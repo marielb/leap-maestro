@@ -25,6 +25,20 @@ header h1 {
   font-size: 40px;
 }
 
+a {
+  color: #1ba39c;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+a:hover {
+  color: #674172;
+}
+
+footer {
+  margin: 20px 0;
+}
+
 #leap-status h2 {
   float: right;
   line-height: 40px;
@@ -52,6 +66,12 @@ header h1 {
 
 .disconnected .status {
   background: #D30A0A;
+}
+
+.flowplayer { 
+  display: none;
+  width: 100%; 
+  background: #000;
 }
 
 #video-list {

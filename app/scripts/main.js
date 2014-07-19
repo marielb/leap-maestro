@@ -1,61 +1,55 @@
-$(document).ready(function() {
+appState = {
+  playSpeed: 1
+}
 
-  $('#video-list li').click(function() {
-    var vidName = $(this).data('link');
-    $('#video-list').hide();
-    $('.flowplayer').show();
-    $('.fp-engine').attr('src', '../videos/' + vidName);
-    $('.video-exit').show();
-  });
+leapConductor = {
 
-  $('.video-exit').click(function() {
-    $(this).hide();
-    $('.flowplayer').fadeOut(500);
-    $('#video-list').fadeIn(500);
-  });
+  initialize: function() {
+    this.initFlowPlayer();
+    leapController.initialize();
+  },
 
-    appState = {
-      playSpeed: 1
-    }
-
-
+  initFlowPlayer: function() {
     flowplayer(function (api, root) {
-     
-      api.bind("load", function () {
-     
-      // do something when a new video is about to be loaded
-     
-      }).bind("ready", function () {
-     
-        console.log(api);
-        api.play();
+      flowPlayer.api = api;
 
-        $(document).keypress(function (eh){ 
+      api.bind('load', function () {
+        flowPlayer.load(api);
+        console.log('load');
 
-          if (eh.keyCode === 38) {
-            appState.playSpeed += 0.1;
-            api.speed(appState.playSpeed);
-          } else if (eh.keyCode === 40) {
-            appState.playSpeed -= 0.1;
-            api.speed(appState.playSpeed);
-          }
-
-          console.log(eh.keyCode);
-        });
-
-     
+      }).bind('ready', function () {
+        flowPlayer.ready(api);
+        console.log('reload');
       });
-
-      console.log('!!!!!!');
-      $('.video-exit').click(function() {
-          console.log('stop!!!!');
-          api.stop();
-        });
-     
     });
+  }
+};
 
+flowPlayer = {
+  playSpeed: 1,
 
-  var ctl = new Leap.Controller({enableGestures: true});
+  load: function(api) {
+
+  },
+
+  ready: function(api) {
+    console.log(api);
+    api.play();
+
+    $(document).keypress(function (eh){ 
+
+      if (eh.keyCode === 38) {
+        appState.playSpeed += 0.1;
+        api.speed(appState.playSpeed);
+      } else if (eh.keyCode === 40) {
+        appState.playSpeed -= 0.1;
+        api.speed(appState.playSpeed);
+      }
+
+      console.log(eh.keyCode);
+    });
+  }
+}
 
   ctl.on( 'connect' , function(){
     $('.connected').show();
@@ -69,57 +63,101 @@ $(document).ready(function() {
     console.log( 'LeapMotion disconnected.' );
   });
 
-  var swiper = ctl.gesture('swipe');
-  var xTolerance = 50;
-  var yTolerance = 30;
-  var swipeLeft = false;
-  var current = Date.now();
 
-  var timez = [];
-  var average = null;
+var leapController = {
 
-  swiper.update(function(g) {
-    if (Math.abs(g.translation()[0]) > xTolerance || Math.abs(g.translation()[1]) > yTolerance) {
-      var xDir = Math.abs(g.translation()[0]) > xTolerance ? (g.translation()[0] > 0 ? -1 : 1) : 0;
-      var yDir = Math.abs(g.translation()[1]) > yTolerance ? (g.translation()[1] < 0 ? -1 : 1) : 0;
-      // console.log("x direction: " + xDir + " y direction: " + yDir);
+  controller: new Leap.Controller({enableGestures: true}),
 
-      if (xDir == -1 && swipeLeft == false) {
-        swipeLeft = true;
+  swiper: null,
+  xTolerance: 50,
+  yTolearnce: 30,
+  swipeLeft: false,
+  current: Date.now(),
 
-        current = resetTime(current);
-      } else if (xDir == 1 && swipeLeft == true) {
-        swipeLeft = false;
+  swipeDurations: [],
 
-        current = resetTime(current);
+  average: null,
+
+  initialize: function() {
+    var that = this;
+
+    this.controller.on( 'connect' , function(){
+      console.log( 'Successfully connected.' );
+    });
+
+    this.controller.on( 'disconnect' , function(){
+      console.log( 'LeapMotion disconnected.' );
+    });
+
+    this.swiper = this.controller.gesture('swipe');
+
+    this.swiper.update(function(g) {
+      if (Math.abs(g.translation()[0]) > that.xTolerance || Math.abs(g.translation()[1]) > that.yTolerance) {
+        
+        var xDir = Math.abs(g.translation()[0]) > that.xTolerance ? (g.translation()[0] > 0 ? -1 : 1) : 0;
+        var yDir = Math.abs(g.translation()[1]) > that.yTolerance ? (g.translation()[1] < 0 ? -1 : 1) : 0;
+
+        if (xDir === -1 && that.swipeLeft === false) {
+          that.swipeLeft = true;
+          that.current = that.resetTime();
+        } else if (xDir === 1 && that.swipeLeft === true) {
+          that.swipeLeft = false;
+          that.current = that.resetTime();
+        } else if (yDir != 0) {
+          adjustVolume(yDir);
+        }
       }
-    }
-  });
+    });
 
-  ctl.connect();
+    this.controller.connect();    
+  },
 
-  function resetTime(current) {
-    diff = (Date.now() - current) / 1000;
+  resetTime: function () {
+    diff = (Date.now() - this.current) / 1000;
     console.log(diff);
 
-    if (timez.length < 9) {
-        timez.push(diff);
-    } else if (timez.length == 9) {
-        var average = getAverage(timez);
-        console.log("average: " + average);
+    if (this.swipeDurations.length < 9) {
+        this.swipeDurations.push(diff);
+    } else if (this.swipeDurations.length == 9) {
+        this.average = this.getAverage(this.swipeDurations);
+        console.log('average: ' + this.average);
     }
 
     return Date.now();
-  }
+  }, 
 
-  function getAverage(arr) {
-    var sum = 0;
-    for (var x = 1; x < timez.length; x++) {
-        sum = sum + timez[x];
+  getAverage: function () { 
+    var sum = 0; 
+    for (var x = 1; x < this.swipeDurations.length; x++) {
+        sum = sum + this.swipeDurations[x];
     }
 
     return sum / 8;
+  },
+
+  adjustVolume: function (val) {
+    if (val < 0) {
+        console.log("lower volume by a tiny bit");
+    } else {
+        console.log("raise volume by a tiny bit");
+    }
   }
+}
 
 
+$(document).ready(function() {
+  leapConductor.initialize();
+  $('#video-list li').click(function() {
+    var vidName = $(this).data('link');
+    $('#video-list').hide();
+    $('.flowplayer').show();
+    $('.fp-engine').attr('src', '../videos/' + vidName);
+    $('.video-exit').show();
+  });
+
+  $('.video-exit').click(function() {
+    $(this).hide();
+    $('.flowplayer').fadeOut(500);
+    $('#video-list').fadeIn(500);
+  });
 });
