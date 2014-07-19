@@ -29,23 +29,23 @@ $(document).ready(function() {
     $('.flowplayer .video-exit').show();
   });
 
-  // hide video and show list
-  $('.video-exit').click(function() {
+  // hide flowplayer video and show list
+  $('flowplayer .video-exit').click(function() {
     $(this).hide();
     $('.flowplayer').animate({
       marginTop: '300px',
       height: 0
     }, 200, function() {
       $('.flowplayer').hide();
-      $('#ytplayer').hide();
       $('#video-list').fadeIn(400);
     });
   });
 
-  // add your own video from youtube
-  $('.video-plus').click(function() {
-    $('.plus').hide();
-    $('.add').show();
+  // hide youtube video and show list
+  $('.ytplayer.video-exit').click(function() {
+    $(this).hide();
+    $('#ytplayer').hide();
+    $('#video-list').fadeIn(400);
   });
 
   // show youtube video
@@ -61,8 +61,7 @@ $(document).ready(function() {
     swfobject.embedSWF(url, "ytplayer", "900", "620", "8", null, null, params, atts);
 
     $('#ytplayer').css('display', 'block');
-    $('#ytplayer').prepend('<div class="video-exit"><img src="img/x.png"></div>');
-    $('#ytplayer .video-exit').show();
-    // ytplayer.loadVideoById(videoID, 0);
+    $('.ytplayer.video-exit').show();
+    $('.video-id').val("");
   });
 });
