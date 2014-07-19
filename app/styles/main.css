@@ -49,6 +49,7 @@ a:hover {
   position: absolute;
   right: 20px;
   bottom: 5px;
+  color: #999;
 }
 
 #playback-info h2 {
@@ -226,6 +227,26 @@ a:hover {
   padding: 10px;
   background: #fff;
   border: 1px solid #aaa;
+}
+
+::-webkit-input-placeholder {
+   color: #D9D9D9;
+   font-weight: normal;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #D9D9D9;
+   font-weight: normal;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #D9D9D9;
+   font-weight: normal;  
+}
+
+:-ms-input-placeholder {  
+   color: #D9D9D9;
+   font-weight: normal;  
 }
 
 .add button {
