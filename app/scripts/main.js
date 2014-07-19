@@ -1,10 +1,4 @@
 $(document).ready(function() {
-  var vid = $('#video-list li');
-  $.each(vid, function() {
-    var randomColor = Math.floor(Math.random()*16777215).toString(16);
-    $(this).css('background-color', '#' + randomColor);
-  });
-
     appState = {
       playSpeed: 1
     }
@@ -73,6 +67,8 @@ $(document).ready(function() {
         swipeLeft = false;
 
         current = resetTime(current);
+      } else if (yDir != 0) {
+        adjustVolume(yDir);
       }
     }
   });
@@ -93,12 +89,30 @@ $(document).ready(function() {
     return Date.now();
   }
 
+  /**
+   * returns average of the last 8 numbers of the array
+   * @param  arr
+   * @return void
+   */
   function getAverage(arr) {
     var sum = 0;
-    for (var x = 1; x < timez.length; x++) {
-        sum = sum + timez[x];
+    for (var x = 1; x < arr.length; x++) {
+        sum = sum + arr[x];
     }
 
     return sum / 8;
+  }
+
+  /**
+   * raises or lowers volume depending if the value is positive or negative
+   * @param  val
+   * @return void
+   */
+  function adjustVolume(val) {
+    if (val < 0) {
+        console.log("lower volume by a tiny bit");
+    } else {
+        console.log("raise volume by a tiny bit");
+    }
   }
 });
