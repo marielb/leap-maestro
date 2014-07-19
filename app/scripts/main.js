@@ -7,6 +7,20 @@ function onYouTubePlayerReady(playerId) {
   ytPlayer.initialize(document.getElementById("ytplayer"));
 }
 
+function onYouTubeIframeAPIReady() {
+  var player;
+  player = new YT.Player('player', {
+    videoId: 'M7lc1UVf-VE',
+    playerVars: { 'autoplay': 1, 'controls': 0 },
+    events: {
+      'onReady': onPlayerReady,
+      'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
+      'onStateChange': onPlayerStateChange,
+      'onError': onPlayerError
+    }
+  });
+}
+
 $(document).ready(function() {
 
   leapConductor.initialize();
@@ -36,6 +50,9 @@ $(document).ready(function() {
       $('.flowplayer').hide();
       $('#video-list').fadeIn(400);
     });
+    $(".current-tempo").html("? BPM&nbsp;&nbsp;");
+    $(".original-tempo").html("? BPM");
+    leapController.reset();
   });
 
   // hide youtube video and show list
@@ -43,6 +60,9 @@ $(document).ready(function() {
     $(this).hide();
     $('#ytplayer').hide();
     $('#video-list').fadeIn(400);
+    $(".current-tempo").html("? BPM&nbsp;&nbsp;");
+    $(".original-tempo").html("? BPM");
+    leapController.reset();
   });
 
   // show youtube video
@@ -51,7 +71,7 @@ $(document).ready(function() {
 
     // set video
     var videoID = $('.video-id').val();
-    var url = 'http://www.youtube.com/v/' + videoID + '&enablejsapi=1&playerapiid=ytplayer&version=3';
+    var url = 'http://www.youtube.com/v/' + videoID + '&enablejsapi=1&playerapiid=ytplayer&version=3&html5=1';
 
     var atts = { id: "ytplayer" };
     var params = {allowScriptAccess: "always"};

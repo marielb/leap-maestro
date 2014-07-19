@@ -16,6 +16,23 @@ var leapController = {
   originalTempo: null,
   currTempo: null,
 
+  reset: function() {
+    this.controller = new Leap.Controller({enableGestures: true});
+    this.swiper = null;
+    this.xTolerance = 20;
+    this.yTolerance = 60;
+    this.swipeLeft = false;
+    this.current = Date.now();
+
+    this.raiseCount = 0;
+    this.lowerCount = 0;
+
+    this.swipeDurations = [];
+
+    this.originalTempo = null;
+    this.currTempo = null;
+  },
+
   initialize: function() {
     var that = this;
 

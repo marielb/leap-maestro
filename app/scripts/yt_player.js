@@ -20,10 +20,11 @@ var ytPlayer = {
   },
 
   volume: function(volumeChange) {
+    var volume = this.api.getVolume();
     if (volumeChange < 0) {
-      this.setVolume(this.api.volumeLevel - .1);
+      this.api.setVolume(volume - 10);
     } else {
-      this.setVolume(this.api.volumeLevel + .1);
+      this.api.setVolume(volume + 10);
     }
   },
 
