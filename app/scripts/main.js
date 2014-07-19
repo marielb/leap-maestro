@@ -2,7 +2,7 @@
 flowPlayer.initialize();
 
 function onYoutubePlayerReady(playerId) {
-  var ytPlayer document.getElementById();
+  var ytPlayer = document.getElementById();
 
   function play() {
     if (ytplayer) {
