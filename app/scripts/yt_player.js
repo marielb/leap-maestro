@@ -4,8 +4,9 @@ var ytPlayer = {
 
   initialize: function(api) {
     this.api = api;
+    window.api = api;
 
-    console.log(api);
+    this.api.playVideo();
   },
 
   speed: function(speedChange) {
@@ -24,5 +25,9 @@ var ytPlayer = {
     } else {
       this.setVolume(this.api.volumeLevel + .1);
     }
+  },
+
+  stop: function() {
+    this.api.stopVideo();
   }
 }

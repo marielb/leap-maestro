@@ -1,8 +1,14 @@
 
 flowPlayer.initialize();
 
+// Get a yt player object and initialize the controlls
+function onYouTubePlayerReady(playerId) {
+  leapConductor.player = ytPlayer;
+  ytPlayer.initialize(document.getElementById("ytplayer"));
+}
+
 $(document).ready(function() {
-  
+
   leapConductor.initialize();
   
   // hide video list and show video
@@ -17,7 +23,7 @@ $(document).ready(function() {
     $('.fp-engine').attr('src', '../videos/' + vidName);
     $('.flowplayer .video-exit').show();
 
-    leapConductor.player = 'flow';
+    leapConductor.player = flowPlayer;
   });
 
   // hide flowplayer video and show list
@@ -50,11 +56,7 @@ $(document).ready(function() {
     var atts = { id: "ytplayer" };
     var params = {allowScriptAccess: "always"};
     
-      swfobject.embedSWF(url, "ytplayer", "900", "620", "8", null, null, params, atts, function (options) {
-        // Get a yt player object and initialize the controlls
-        ytPlayer.initialize(options.ref);
-        leapConductor.player = 'ytplayer';
-      });
+      swfobject.embedSWF(url, "ytplayer", "900", "620", "8", null, null, params, atts);
 
     $('#ytplayer').css('display', 'block');
 

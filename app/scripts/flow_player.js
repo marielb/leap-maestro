@@ -40,6 +40,10 @@ var flowPlayer = {
     console.log("VOLUME: " + this.api.volumeLevel);
   },
 
+  stop: function() {
+    this.api.stopVideo();
+  },
+
   load: function() {
 
   },
@@ -53,17 +57,5 @@ var flowPlayer = {
       that.api.stop();
     });
 
-    $(document).keypress(function (eh){ 
-      
-      if (eh.keyCode === 38) {
-        that.playSpeed += 0.1;
-        that.api.speed(that.playSpeed);
-
-      } else if (eh.keyCode === 40) {
-        that.playSpeed -= 0.1;
-        that.api.speed(that.playSpeed);
-      }
-
-    });
   }
 }
