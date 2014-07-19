@@ -36,6 +36,10 @@ var flowPlayer = {
 
     that.api.play();
 
+    $('.video-exit').click(function() {
+      that.api.stop();
+    });
+
     $(document).keypress(function (eh){ 
       
       if (eh.keyCode === 38) {
