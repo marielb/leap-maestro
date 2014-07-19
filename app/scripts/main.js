@@ -1,6 +1,17 @@
 
 flowPlayer.initialize();
 
+function onYoutubePlayerReady(playerId) {
+  var ytPlayer document.getElementById();
+
+  function play() {
+    if (ytplayer) {
+      ytplayer.playVideo();
+    }
+  }
+
+}
+
 $(document).ready(function() {
   
   leapConductor.initialize();
