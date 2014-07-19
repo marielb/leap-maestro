@@ -19,8 +19,12 @@ var flowPlayer = {
     });
   },
 
-  speed: function() {
-
+  speed: function(speedChange) {
+    if (speedChange < 1) {
+      this.api.speed(this.api.currentSpeed + .25);
+    } else {
+      this.api.speed(this.api.currentSpeed - .25);
+    }
   },
 
   load: function() {

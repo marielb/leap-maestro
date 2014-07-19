@@ -3,7 +3,7 @@ var leapController = {
   controller: new Leap.Controller({enableGestures: true}),
 
   swiper: null,
-  xTolerance: 20,
+  xTolerance: 10,
   yTolerance: 80,
   swipeLeft: false,
   current: Date.now(),
@@ -73,6 +73,8 @@ var leapController = {
           this.currSpeed = this.getAverage(this.swipeDurations);
           this.swipeDurations = [];
           console.log('average: ' + this.average + ' currspeed: ' + this.currSpeed);
+
+          flowPlayer.speed((this.average / this.currSpeed));
           console.log('SPEED: ' + (this.average / this.currSpeed));
       }
     }
@@ -93,14 +95,12 @@ var leapController = {
     if (val < 0) {
         this.raiseCount++;
         if (this.raiseCount == 8) {
-          this.swipeDurations = [];
           this.raiseCount = 0;
           console.log("raise volume by a tiny bit");
         };
     } else {
         this.lowerCount++;
         if (this.lowerCount == 8) {
-          this.swipeDurations = [];
           this.lowerCount = 0;
           console.log("lower volume by a tiny bit");
         };
