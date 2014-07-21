@@ -7,19 +7,26 @@ function onYouTubePlayerReady(playerId) {
   ytPlayer.initialize(document.getElementById("ytplayer"));
 }
 
-function onYouTubeIframeAPIReady() {
-  var player;
-  player = new YT.Player('player', {
-    videoId: 'M7lc1UVf-VE',
-    playerVars: { 'autoplay': 1, 'controls': 0 },
-    events: {
-      'onReady': onPlayerReady,
-      'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
-      'onStateChange': onPlayerStateChange,
-      'onError': onPlayerError
-    }
-  });
-}
+// function onYouTubeIframeAPIReady() {
+//   var player;
+//   player = new YT.Player('player', {
+//     videoId: 'M7lc1UVf-VE',
+//     playerVars: { 'autoplay': 1, 'controls': 0 },
+//     events: {
+//       'onReady': onPlayerReady,
+//       'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
+//       'onStateChange': onPlayerStateChange,
+//       'onError': onPlayerError
+//     }
+//   });
+// }
+
+
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 $(document).ready(function() {
 
@@ -76,7 +83,20 @@ $(document).ready(function() {
     var atts = { id: "ytplayer" };
     var params = {allowScriptAccess: "always"};
     
-      swfobject.embedSWF(url, "ytplayer", "900", "620", "8", null, null, params, atts);
+    var player;
+    ytPlayer.api = new YT.Player('ytplayer', {
+      videoId: videoID,
+      playerVars: { 'autoplay': 1, 'controls': 0 },
+      // events: {
+      //   'onReady': onPlayerReady,
+      //   'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
+      //   'onStateChange': onPlayerStateChange,
+      //   'onError': onPlayerError
+      // }
+    });
+
+
+    // swfobject.embedSWF(url, "ytplayer", "900", "620", "8", null, null, params, atts);
 
     $('#ytplayer').css('display', 'block');
 
